@@ -20,7 +20,7 @@ endif
 
 all: test tuner
 
-test: makedir
+test: 
 	@$(CXX) $(CXXFLAGS) "core\*.cpp" "test\*.cpp" $(STATIC_LIB) -o "bin\test\test.exe"
 
 clean: makedir
@@ -28,8 +28,5 @@ clean: makedir
 	@rm -rf bin
 	@make makedir
 
-makedir:
-	@mkdir -p bin
-	@mkdir -p bin\test
 
 .DEFAULT_GOAL := test

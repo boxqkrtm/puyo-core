@@ -109,19 +109,13 @@ static i64 bench_pop(i32 iter)
 
     i64 time = 0;
     avec<Field, 19> mask = avec<Field, 19>();
-
+    auto time_start = std::chrono::high_resolution_clock::now();
     for (i32 i = 0; i < iter; ++i) {
         auto f_copy = f;
-        auto time_start = std::chrono::high_resolution_clock::now();
         mask = f_copy.pop();
-        auto time_end = std::chrono::high_resolution_clock::now();
-        time += std::chrono::duration_cast<std::chrono::nanoseconds>(time_end - time_start).count();
+        auto chain = Chain::get_score(mask);
     }
-
-    auto chain = Chain::get_score(mask);
-
-    std::cout << "count: " << int(chain.count) << std::endl;
-    std::cout << "score: " << int(chain.score) << std::endl;
-
-    return time / iter;
+    auto time_end = std::chrono::high_resolution_clock::now();
+    time += std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start).count();
+    return time;
 };
