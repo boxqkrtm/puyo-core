@@ -3,8 +3,9 @@
 
 int main()
 {
-    auto t = bench_pop(10000);
-    printf("time: %d ns\n", t);
-
+    auto t = bench_pop(5000000);
+    printf("do 5000000, time: %d ms\n", t);
+    while(true){
+    }
     return 0;
 };
