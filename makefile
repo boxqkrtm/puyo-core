@@ -9,7 +9,7 @@ endif
 ifeq ($(BUILD), debug)
 CXXFLAGS += -fdiagnostics-color=always -DUNICODE -std=c++20 -Wall -Og -pg -no-pie
 else
-CXXFLAGS += -DNDEBUG -std=c++20 -O3 -msse4 -mbmi2 -flto $(CXXPROF) -march=native
+CXXFLAGS += -DNDEBUG -std=c++20 -O3 -msse4 -mbmi2 -flto $(CXXPROF) -static-libgcc -static-libstdc++ --static
 endif
 
 ifeq ($(PEXT), true)
